@@ -3,7 +3,19 @@ const express=require("express"), session=require("express-session"), bcrypt=req
 const app=express(), PORT=process.env.PORT||3000;
 app.use(express.json()); app.use(express.urlencoded({extended:true})); app.use(express.static(path.join(__dirname,"public")));
 app.use(session({secret:process.env.SESSION_SECRET||"change-this-secret",resave:false,saveUninitialized:false,cookie:{httpOnly:true,sameSite:"lax",secure:process.env.NODE_ENV==="production",maxAge:8*60*60*1000}}));
-const pool=mysql.createPool({host:process.env.DB_HOST||"localhost",port:Number(process.env.DB_PORT||3306),user:process.env.DB_USER||"root",password:process.env.DB_PASSWORD||"",database:process.env.DB_NAME||"student_management",waitForConnections:true,connectionLimit:10});
+
+const pool = mysql.createPool({
+  host: process.env.DB_HOST || "localhost",
+  port: Number(process.env.DB_PORT || 3306),
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASSWORD || "",
+  database: process.env.DB_NAME || "student_management",
+  waitForConnections: true,
+  connectionLimit: 10,
+  ssl: process.env.DB_HOST
+    ? { rejectUnauthorized: true }
+    : undefined
+});
 const clean=v=>String(v??"").trim(), auth=(req,res,next)=>req.session.userId?next():res.status(401).json({message:"Please sign in first."});
 
 app.post("/api/signup", async (req, res) => {
