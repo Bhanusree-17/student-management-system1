@@ -1,0 +1,22 @@
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 Inter,system-ui,Arial;color:#18233d;background:#f4f6fb}button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:11px 15px}button.primary,.auth-card>button[type=submit]{background:#6258e7;color:white;font-weight:700}.auth{min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(135deg,#111e3c,#5666a8)}.auth-card{width:min(430px,100%);background:white;border-radius:22px;padding:32px;box-shadow:0 24px 70px #08142c55}.brand{font-weight:900;color:#6258e7;font-size:24px}.brand span{color:#8c91a5;font-size:14px}.auth-card h1{margin:10px 0 0}.auth-card p{color:#8991a5;margin-top:0}.auth-card label{display:block;margin:17px 0;font-weight:600}.auth-card input{display:block;width:100%;margin-top:7px;padding:13px;border:1px solid #dce2ee;border-radius:10px}.auth-card>button{width:100%;margin-top:8px}.link{background:none;color:#6258e7}.error{color:#dc4459;margin-top:12px}#app{min-height:100vh}#sidebar{position:fixed;inset:0 auto 0 0;width:245px;background:#172443;color:white;padding:25px 16px;display:flex;flex-direction:column;z-index:5}#sidebar .brand{color:white;margin:0 12px 30px}.nav{width:100%;text-align:left;color:#c5cce0;background:transparent;margin:4px 0;padding:13px 15px}.nav.active,.nav:hover{background:#303d61;color:white}.side-bottom{margin-top:auto;color:#c5cce0;padding:10px}main{margin-left:245px;padding:30px;max-width:1600px}header{display:flex;align-items:center;gap:15px;justify-content:space-between;margin-bottom:25px}header small{color:#777f98;letter-spacing:2px;font-weight:700}header h1{margin:2px 0;font-size:28px}#menu{display:none;background:white}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-bottom:22px}.stat,.panel{background:white;border:1px solid #e9edf5;border-radius:16px;padding:20px;box-shadow:0 5px 20px #1d2b4b06}.stat small{color:#7b8499}.stat strong{display:block;font-size:28px;margin-top:5px}.panel{margin-bottom:18px}.panel h2{margin:0 0 16px;font-size:19px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px}.toolbar input,.toolbar select,.formgrid input,.formgrid select{padding:11px;border:1px solid #dce2ee;border-radius:9px;background:white;min-width:0}.toolbar input{flex:1;min-width:180px}table{border-collapse:collapse;width:100%;min-width:650px}th,td{text-align:left;padding:13px 10px;border-bottom:1px solid #edf0f6}th{color:#798298;font-size:12px;text-transform:uppercase;letter-spacing:.5px}td{font-size:14px}.tablewrap{overflow:auto}.badge{padding:4px 9px;border-radius:20px;background:#e9e8ff;color:#6258e7;font-size:12px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.formgrid label{display:block;font-size:13px;color:#59647d;font-weight:600}.formgrid input,.formgrid select{display:block;width:100%;margin-top:5px}.formgrid button{align-self:end}.actions{display:flex;gap:8px}.actions button{padding:7px 10px;background:#f0f2f8}.empty{color:#8992a6;padding:18px;text-align:center}#toast{position:fixed;bottom:20px;right:20px;background:#172443;color:white;padding:12px 18px;border-radius:12px;display:none;z-index:9}.muted{color:#8790a4}@media(max-width:900px){#sidebar{transform:translateX(-100%);transition:transform .2s;width:260px}#sidebar.open{transform:translateX(0);box-shadow:0 0 0 100vmax #0b163866}main{margin-left:0;padding:20px}#menu{display:block}header h1{font-size:23px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){main{padding:14px}header{gap:8px;flex-wrap:wrap}header>div{flex:1}#quickAdd{padding:10px;font-size:13px}.stats{gap:9px}.stat{padding:14px}.stat strong{font-size:23px}.formgrid{grid-template-columns:1fr}.panel{padding:14px}.auth-card{padding:24px}}
+
+/* FIX LOGIN AND DASHBOARD VISIBILITY */
+
+[hidden] {
+    display: none !important;
+}
+
+/* Login page */
+#auth {
+    display: flex;
+}
+
+/* Dashboard must remain hidden before login */
+#app[hidden] {
+    display: none !important;
+}
+
+/* Dashboard after login */
+#app:not([hidden]) {
+    display: flex;
+}

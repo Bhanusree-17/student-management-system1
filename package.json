@@ -1,0 +1,8 @@
+{
+  "name":"student-management-system",
+  "version":"2.0.0",
+  "description":"Student management with attendance and academic marks",
+  "main":"server.js",
+  "scripts":{"start":"node server.js"},
+  "dependencies":{"bcryptjs":"^2.4.3","dotenv":"^16.4.7","express":"^4.21.2","express-session":"^1.18.1","mysql2":"^3.12.0"}
+}
